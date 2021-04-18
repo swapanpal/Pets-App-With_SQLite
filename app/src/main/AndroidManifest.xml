@@ -26,6 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="android.example.com.pets_18_04_2021"
+            android:name=".data.PetProvider"
+            android:exported="false"/>
     </application>
 
 </manifest>
