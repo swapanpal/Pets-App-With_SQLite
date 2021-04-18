@@ -40,7 +40,7 @@ public class PetContract {
     public static final class PetEntry implements BaseColumns {
         /** The content URI to access the pet data in the provider */
         public static final Uri CONTENT_URI = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_PETS);
-        
+
         /** Name of database table for pets */
         public final static String TABLE_NAME = "pets";
 
