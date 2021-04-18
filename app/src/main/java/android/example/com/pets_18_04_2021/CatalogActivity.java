@@ -3,10 +3,15 @@ package android.example.com.pets_18_04_2021;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.example.com.pets_18_04_2021.data.PetContract;
+import android.example.com.pets_18_04_2021.data.PetDbHelper;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -29,7 +34,9 @@ public class CatalogActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
+    
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
