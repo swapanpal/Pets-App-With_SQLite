@@ -17,6 +17,7 @@ import android.example.com.pets_18_04_2021.data.PetContract;
 import android.example.com.pets_18_04_2021.data.PetDbHelper;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,23 +32,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  */
 public class CatalogActivity extends AppCompatActivity
 implements LoaderManager.LoaderCallbacks<Cursor>{
-
-    /**
-     * 1.0 Starter code
-     * 1.1 Add PetContract class
-     * 1.2 Add PetDbHelper class
-     * 1.7 Add ContentProvider
-     * 1.8 Add constants for pet content URIs
-     * 1.9 Add UriMatcher to ContentProvider
-     * 1.10 Implement ContentProvider query() method
-     * 1.12 Implement and use ContentProvider insert() method
-     * 1.13 Add input validation to ContentProvider insert() method
-     * 1.14 Implement ContentProvider update() method
-     * 1.15 Implement ContentProvider delete() method
-     * 1.16 Implement ContentProvider getType() method
-     * 1.17 Create PetCursorAdapter to display list of pets in ListView
-     *
-     */
 
 
     /** Identifier for the pet data loader */
@@ -127,6 +111,13 @@ implements LoaderManager.LoaderCallbacks<Cursor>{
         // Receive the new content URI that will allow us to access Toto's data in the future.
         Uri newUri = getContentResolver().insert(PetEntry.CONTENT_URI, values);
     }
+    /**
+     * Helper method to delete all pets in the database.
+     */
+    private void deleteAllPets() {
+        int rowsDeleted = getContentResolver().delete(PetEntry.CONTENT_URI, null, null);
+        Log.v("CatalogActivity", rowsDeleted + " rows deleted from pet database");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -146,7 +137,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>{
                 return true;
             // Respond to a click on the "Delete all entries" menu option
             case R.id.action_delete_all_entries:
-                // Do nothing for now
+                deleteAllPets();
                 return true;
         }
         return super.onOptionsItemSelected(item);
